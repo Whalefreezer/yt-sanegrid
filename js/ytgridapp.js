@@ -792,11 +792,11 @@ ytsubgridApp.directive( 'scroll',
 	['$window', '$document',
 	function ( $window, $document ) {
 		return function ( scope, elem, attrs ) {
-			angular.element( $window ).bind( 'scroll', function () {
+			angular.element( $window ).bind( 'scroll', window.requestAnimFrame(function () {
 				if ( $document.height() <= $window.innerHeight + $window.pageYOffset ) {
 					scope.$apply( attrs.scroll );
 				}
-			} );
+			} ));
 		};
 	}]
 );
